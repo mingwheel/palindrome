@@ -1,8 +1,10 @@
+module.exports = Phrase;
+
 // Reverses a string.
 String.prototype.reverse = function() {
   return Array.from(this).reverse().join('');
 }
-// Defines a phrase object.
+// Defines a Phrase object.
 function Phrase(content) {
   this.content = content;
 
