@@ -8,31 +8,21 @@ String.prototype.reverse = function() {
 function Phrase(content) {
   this.content = content;
 
-  // Returns a string in lower case.
-  this.processor = function(string) {
-    return string.toLowerCase();
-  }
   // Returns the letters in the content.
   this.letters = function letters() {
-    let theLetters = [];
-    for (let i = 0; i < this.content.length; i++) {
-      if (this.content.charAt(i).match(/[a-zA-Z]/)) {
-        theLetters.push(this.content.charAt(i));
-      }
-    }
-    return theLetters.join("");
+    // return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
+    return (this.content.match(/[a-z]/gi) || []).join(""); // short circuit in case of null content
   }
-  
+
   // Returns content processed for palindrome test.
   this.processedContent = function processedContent() {
-    return this.processor(this.letters());
+    return this.letters().toLowerCase();
   }
   // Returns true for palindrome, false otherwise.
   this.palindrome = function palindrome() {
     return this.processedContent() === this.processedContent().reverse();
   }
 }
-
 // // Defines a TranslatedPhrase object.
 // function TranslatedPhrase(content, translation) {
 //   this.content = content;
