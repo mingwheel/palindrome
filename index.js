@@ -11,7 +11,8 @@ function Phrase(content) {
   // Returns the letters in the content.
   this.letters = function letters() {
     // return Array.from(this.content).filter(c => c.match(/[a-z]/i)).join("");
-    return (this.content.match(/[a-z]/gi) || []).join(""); // short circuit in case of null content
+    const alphaRegEx = /[a-z]/gi;
+    return (this.content.match(alphaRegEx) || []).join(""); // short circuit in case of null content
   }
 
   // Returns content processed for palindrome test.
@@ -20,7 +21,9 @@ function Phrase(content) {
   }
   // Returns true for palindrome, false otherwise.
   this.palindrome = function palindrome() {
-    return this.processedContent() === this.processedContent().reverse();
+    return this.processedContent()
+    ? this.processedContent() === this.processedContent().reverse()
+    : false;
   }
 }
 // // Defines a TranslatedPhrase object.

@@ -8,6 +8,11 @@ describe("Phrase", () => {
       assert(!nonPalindrome.palindrome());
     });
 
+    it("should return false for an empty string", () => {
+      let emptyPhrase = new Phrase("");
+      assert(!emptyPhrase.palindrome());
+    });
+
     it("should return true for a plain palindrome", () => {
       let plainPalindrome = new Phrase("racecar");
       assert(plainPalindrome.palindrome());
@@ -26,6 +31,10 @@ describe("Phrase", () => {
     it("should return only letters", () => {
       let punctPalindrome = new Phrase("Madam, I'm Adam");
       assert.strictEqual(punctPalindrome.letters(), "MadamImAdam");
+    });
+    it("should return the empty string on no match", () => {
+      let noLetters = new Phrase("123.456");
+      assert.strictEqual(noLetters.letters(), "");
     });
   });
 });
